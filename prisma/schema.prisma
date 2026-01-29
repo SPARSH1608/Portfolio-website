@@ -1,0 +1,54 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  repoUrl     String?
+  demoUrl     String?
+  techStack   String[]
+  imageUrl    String?
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  commitLogs  CommitLog[]
+}
+
+model CommitLog {
+  id        String   @id @default(cuid())
+  message   String
+  date      DateTime
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model SocialPost {
+  id        String   @id @default(cuid())
+  platform  String   // "twitter", "medium"
+  content   String?  // Text content or HTML embed snippet
+  description String? // New field for Bento Grid context
+  url       String
+  date      DateTime
+  isVisible Boolean  @default(true)
+}
+
+model SiteStats {
+  id        String   @id @default(cuid())
+  visitors  Int      @default(0)
+}
