@@ -65,7 +65,7 @@ export default function EditProjectForm({ project }: { project: Project }) {
 
                     <div className="flex justify-end gap-4">
                         <a href="/admin" className="px-4 py-2 text-neutral-500 hover:text-neutral-700">Cancel</a>
-                        <button disabled={isPending} className="px-6 py-2 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-500 disabled:opacity-50">
+                        <button disabled={isPending} className="px-6 py-2 bg-[#052659] text-white font-bold rounded hover:bg-[#10B981] disabled:opacity-50">
                             {isPending ? 'Updating...' : 'Save Changes'}
                         </button>
                     </div>

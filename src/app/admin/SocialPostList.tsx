@@ -29,7 +29,7 @@ export default async function SocialPostList() {
                             </p>
                             <div className="flex items-center gap-3 text-xs text-neutral-400">
                                 <span>{new Date(post.date).toLocaleDateString()}</span>
-                                <a href={post.url} target="_blank" className="flex items-center gap-1 hover:text-emerald-500 transition-colors">
+                                <a href={post.url} target="_blank" className="flex items-center gap-1 hover:text-[#10B981] transition-colors">
                                     <ExternalLink size={10} /> Link
                                 </a>
                             </div>

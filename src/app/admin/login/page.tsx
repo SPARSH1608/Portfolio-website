@@ -19,7 +19,7 @@ export default function LoginPage() {
                             name="password"
                             type="password"
                             required
-                            className="w-full p-3 border-2 border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 focus:outline-none focus:border-emerald-500 transition-colors"
+                            className="w-full p-3 border-2 border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 focus:outline-none focus:border-[#10B981] transition-colors"
                         />
                     </div>
 
@@ -29,7 +29,7 @@ export default function LoginPage() {
 
                     <button
                         disabled={isPending}
-                        className="w-full p-3 bg-emerald-600 text-white font-bold uppercase tracking-wide hover:bg-emerald-500 disabled:opacity-50 minecraft-btn"
+                        className="w-full p-3 bg-[#052659] text-white font-bold uppercase tracking-wide hover:bg-[#10B981] disabled:opacity-50 minecraft-btn"
                     >
                         {isPending ? 'Logging in...' : 'Enter World'}
                     </button>

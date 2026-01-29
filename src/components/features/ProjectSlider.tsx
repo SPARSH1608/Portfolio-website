@@ -37,8 +37,8 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] z-0 pointer-events-none opacity-20" />
 
 
-            <div className="absolute inset-0 z-10 flex">
-                <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-8 md:px-20 pt-20">
+            <div className="absolute inset-0 z-10 flex pointer-events-none">
+                <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-4 md:px-20 pt-10 md:pt-20">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeProject.id}
@@ -46,30 +46,35 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.5 }}
+                            className="pointer-events-auto"
                         >
                             <div className="flex gap-3 mb-6">
                                 {activeProject.techStack?.map((t: string) => (
-                                    <span key={t} className="px-3 py-1 rounded-full bg-white/10 border border-white/5 text-xs font-bold text-emerald-400 uppercase tracking-widest backdrop-blur-md">
+                                    <span key={t} className="px-3 py-1 rounded-full bg-white/10 border border-white/5 text-xs font-bold text-[#34D399] uppercase tracking-widest backdrop-blur-md">
                                         {t}
                                     </span>
                                 ))}
                             </div>
 
-                            <h2 className="text-6xl md:text-8xl font-bold text-white mb-8 font-heading leading-tight tracking-tighter">
+                            <h2 className="text-4xl md:text-8xl font-bold text-white mb-8 font-heading leading-tight tracking-tighter">
                                 {activeProject.title}
                             </h2>
 
-                            <p className="text-neutral-300 text-lg md:text-xl max-w-lg mb-12 leading-relaxed font-light">
+                            <p className="text-neutral-300 text-lg md:text-xl max-w-lg mb-12 leading-relaxed font-light line-clamp-4 md:line-clamp-none">
                                 {activeProject.description}
                             </p>
 
                             <div className="flex gap-4">
-                                <a href={activeProject.demoUrl || "#"} target="_blank" className="px-8 py-4 bg-white text-black font-bold rounded-full flex items-center gap-2 hover:bg-neutral-200 transition-colors">
-                                    Discover <ArrowUpRight size={20} />
-                                </a>
-                                <a href={activeProject.repoUrl || "#"} target="_blank" className="p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
-                                    <Github size={24} />
-                                </a>
+                                {activeProject.demoUrl && (
+                                    <a href={activeProject.demoUrl} target="_blank" className="px-8 py-4 bg-white text-black font-bold rounded-full flex items-center gap-2 hover:bg-neutral-200 transition-colors">
+                                        Discover <ArrowUpRight size={20} />
+                                    </a>
+                                )}
+                                {activeProject.repoUrl && (
+                                    <a href={activeProject.repoUrl} target="_blank" className="p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+                                        <Github size={24} />
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     </AnimatePresence>
@@ -77,7 +82,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
             </div>
 
 
-            <div className="absolute bottom-12 right-0 w-full md:w-1/2 z-20 overflow-visible">
+            <div className="absolute bottom-4 md:bottom-12 right-0 w-full md:w-1/2 z-20 overflow-visible pointer-events-none">
                 <div className="flex items-center gap-6 overflow-hidden mask-image-linear-to-r">
                     <motion.div
                         className="flex gap-6 pl-6"
@@ -96,7 +101,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                                 key={`${project.id}-${i}`}
                                 onClick={() => setActiveProject(project)}
                                 whileHover={{ scale: 1.05, y: -10 }}
-                                className={`shrink-0 w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden relative cursor-pointer group border transition-all duration-300 ${activeProject.id === project.id ? 'border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)]' : 'border-white/10 hover:border-white/30'}`}
+                                className={`pointer-events-auto shrink-0 w-40 h-56 md:w-80 md:h-96 rounded-3xl overflow-hidden relative cursor-pointer group border transition-all duration-300 ${activeProject.id === project.id ? 'border-[#10B981] shadow-[0_0_30px_rgba(16,185,129,0.3)]' : 'border-white/10 hover:border-white/30'}`}
                             >
                                 <img
                                     src={project.imageUrl || "https://images.unsplash.com/photo-1481487484168-9b930d55208d?auto=format&fit=crop&q=80"}
@@ -106,7 +111,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
                                 <div className="absolute bottom-6 left-6 right-6">
-                                    <h4 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">{project.title}</h4>
+                                    <h4 className="text-xl font-bold text-white mb-1 group-hover:text-[#34D399] transition-colors">{project.title}</h4>
                                     <p className="text-xs text-neutral-400 line-clamp-2">{project.description}</p>
                                 </div>
                             </motion.div>

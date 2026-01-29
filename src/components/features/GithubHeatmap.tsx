@@ -65,10 +65,10 @@ export default function GithubHeatmap({
                                     className={cn(
                                         "w-3 h-3 md:w-4 md:h-4 rounded-sm transition-colors duration-200",
                                         intensity === 0 && "bg-neutral-800/50",
-                                        intensity === 1 && "bg-emerald-900",
-                                        intensity === 2 && "bg-emerald-700",
-                                        intensity === 3 && "bg-emerald-500",
-                                        intensity === 4 && "bg-emerald-400",
+                                        intensity === 1 && "bg-[#052659]/40",
+                                        intensity === 2 && "bg-[#10B981]/60",
+                                        intensity === 3 && "bg-[#10B981]",
+                                        intensity === 4 && "bg-[#34D399]",
                                     )}
                                 />
                             )

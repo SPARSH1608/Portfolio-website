@@ -70,7 +70,7 @@ export const CardBody = ({
     return (
         <div
             className={cn(
-                "h-96 w-96 bg-white dark:bg-neutral-900 group/card shadow-lg dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-neutral-200 dark:border-white/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-8 border",
+                "h-96 w-96 bg-white dark:bg-neutral-900 group/card shadow-lg dark:hover:shadow-2xl dark:hover:shadow-[#10B981]/[0.1] border-neutral-200 dark:border-white/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-8 border",
                 className
             )}
         >

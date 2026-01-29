@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #021024;
+  --foreground: #C1E8FF;
+  
+  --card-bg: #052659;
+  --accent-primary: #10B981;
+  --accent-secondary: #34D399;
   
   --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-shine: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(5, 38, 89, 0.4);
+  --glass-shine: rgba(125, 160, 202, 0.1);
   
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
@@ -18,21 +22,21 @@
   }
   
   .glass-card {
-    @apply bg-neutral-900/40 border border-white/5 backdrop-blur-md transition-all duration-500;
+    @apply bg-[#052659]/60 border border-white/10 backdrop-blur-md transition-all duration-500;
   }
   
   .glass-card:hover {
-    @apply bg-neutral-800/60 border-white/20 shadow-2xl shadow-emerald-900/20 transform -translate-y-1;
+    @apply bg-[#052659]/80 border-white/20 shadow-2xl shadow-[#10B981]/20 transform -translate-y-1;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #021024;
+    --foreground: #C1E8FF;
     
-    --card-bg: #1a1a1a;
-    --card-border: #333333;
+    --card-bg: #052659;
+    --card-border: #10B981;
   }
 }
 

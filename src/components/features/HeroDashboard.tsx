@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Project, SocialPost } from '@prisma/client';
-import { Twitter, BookOpen, ArrowRight, Play, LayoutGrid } from 'lucide-react';
+import { Twitter, BookOpen, ArrowRight, Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import TechStackSlider from './TechStackSlider';
 import GithubHeatmap from './GithubHeatmap';
+import SystemModal from '../ui/SystemModal';
 
 interface HeroDashboardProps {
     projects: Project[];
@@ -23,31 +25,32 @@ interface HeroDashboardProps {
 export default function HeroDashboard({ projects, socialPosts = [], githubData, onShowProjects, onShowSocial }: HeroDashboardProps) {
     const featuredProject = projects.find(p => p.isFeatured) || projects[0];
     const otherProjects = projects.filter(p => p.id !== featuredProject?.id).slice(0, 4);
+    const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
 
     return (
-        <section className="min-h-screen w-full bg-black text-white p-4 md:p-8 flex flex-col font-sans selection:bg-emerald-500/30">
+        <section className="min-h-screen w-full bg-black text-white p-4 md:p-8 flex flex-col font-sans selection:bg-[#10B981]/30">
 
 
             <header className="flex flex-col md:flex-row items-center gap-6 mb-4 bg-white/5 border border-white/10 rounded-2xl p-3 backdrop-blur-2xl">
                 <div className="flex items-center gap-4 shrink-0">
-                    <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                    <div className="flex gap-2 group">
+                        <button onClick={() => setIsSystemModalOpen(true)} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" />
+                        <button onClick={() => setIsSystemModalOpen(true)} className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors" />
+                        <button onClick={() => setIsSystemModalOpen(true)} className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors" />
                     </div>
                     <div className="px-4 py-1 bg-black/40 rounded-full border border-white/5 text-xs text-neutral-400 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
                         sparsh.dev
                     </div>
                 </div>
 
-                <div className="grow overflow-hidden px-4 md:px-12 border-x border-white/5 mx-4 hidden md:block">
+                <div className="grow overflow-hidden px-4 md:px-12 border-x border-white/5 mx-4 hidden xs:block md:block">
 
                     <TechStackSlider />
                 </div>
 
                 <div className="flex items-center gap-4 shrink-0">
-                    <button className="p-2 hover:bg-white/10 rounded-full transition-colors"><LayoutGrid size={18} /></button>
+
                 </div>
             </header>
 
@@ -127,13 +130,13 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
 
                         <div className="flex-1 mb-5 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
-                                <h4 className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-3">Recent Commits</h4>
+                                <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-3">Recent Commits</h4>
                                 <div className="space-y-3">
                                     {githubData?.commits?.map((commit, i) => (
                                         <div key={i} className="flex gap-2.5 items-start group">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0 group-hover:shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all" />
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] mt-1.5 shrink-0 group-hover:shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all" />
                                             <div className="overflow-hidden">
-                                                <p className="text-xs text-neutral-200 truncate font-mono group-hover:text-emerald-400 transition-colors">{commit.message}</p>
+                                                <p className="text-xs text-neutral-200 truncate font-mono group-hover:text-[#34D399] transition-colors">{commit.message}</p>
                                                 <p className="text-[10px] text-neutral-600 truncate">{commit.repo} • {new Date(commit.date).toLocaleDateString()}</p>
                                             </div>
                                         </div>
@@ -145,11 +148,11 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
                             </div>
 
                             <div>
-                                <h4 className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-3">Active Repositories</h4>
+                                <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-3">Active Repositories</h4>
                                 <div className="grid grid-cols-1 gap-2.5">
                                     {githubData?.repos?.slice(0, 3).map((repo) => (
                                         <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer"
-                                            className="flex items-center justify-between px-3 py-2.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all group hover:border-emerald-500/20">
+                                            className="flex items-center justify-between px-3 py-2.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all group hover:border-[#10B981]/20">
                                             <div>
                                                 <p className="text-xs font-bold text-neutral-200 group-hover:text-white mb-0.5">{repo.name}</p>
                                                 <p className="text-[10px] text-neutral-500 line-clamp-1">{repo.description}</p>
@@ -167,7 +170,7 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
 
                         <div className="border-t border-white/5 pt-4">
                             <div className="flex justify-between items-end mb-4">
-                                <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-500">Contribution Map</h4>
+                                <h4 className="text-xs font-bold uppercase tracking-widest text-[#10B981]">Contribution Map</h4>
                                 <span className="text-[10px] text-neutral-500">Last 24 Weeks</span>
                             </div>
                             <div className="flex justify-center w-full overflow-x-auto">
@@ -175,7 +178,7 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
                             </div>
                         </div>
 
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#10B981]/5 rounded-full blur-3xl pointer-events-none" />
                     </div>
                 </div>
             </div>
@@ -193,12 +196,12 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
                         <div
                             key={project.id}
                             onClick={onShowProjects}
-                            className="w-[400px] md:w-[420px] flex-none snap-start bg-neutral-900/40 border border-white/5 rounded-3xl p-4 group cursor-pointer hover:bg-white/5 transition-colors"
+                            className="w-[85vw] md:w-[420px] flex-none snap-start bg-neutral-900/40 border border-white/5 rounded-3xl p-4 group cursor-pointer hover:bg-white/5 transition-colors"
                         >
                             <div className="aspect-video h-80 w-full bg-black/50 rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center">
                                 {project.imageUrl && <Image src={project.imageUrl} alt={project.title} fill className="object-cover object-center opacity-80 group-hover:scale-105 transition-transform duration-500" />}
                             </div>
-                            <h4 className="font-bold mb-1 truncate text-lg group-hover:text-emerald-400 transition-colors">{project.title}</h4>
+                            <h4 className="font-bold mb-1 truncate text-lg group-hover:text-[#34D399] transition-colors">{project.title}</h4>
                             <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed">{project.description}</p>
 
                             <div className="mt-3 flex gap-2 flex-wrap h-6 overflow-hidden">
@@ -211,6 +214,7 @@ export default function HeroDashboard({ projects, socialPosts = [], githubData, 
                 </div>
             </div>
 
+            <SystemModal isOpen={isSystemModalOpen} onClose={() => setIsSystemModalOpen(false)} />
         </section >
     );
 }

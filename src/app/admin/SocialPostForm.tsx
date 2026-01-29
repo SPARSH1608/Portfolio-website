@@ -42,7 +42,7 @@ export default function SocialPostForm() {
                 {isPending ? 'Transmitting...' : 'Add to Feed'}
             </button>
 
-            {state?.success && <p className="text-xs text-green-500 font-bold text-center">Signal sent successfully.</p>}
+            {state?.success && <p className="text-xs text-[#10B981] font-bold text-center">Signal sent successfully.</p>}
             {state?.error && <p className="text-xs text-red-500 font-bold text-center">{state.error}</p>}
         </form>
     )

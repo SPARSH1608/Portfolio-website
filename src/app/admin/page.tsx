@@ -35,9 +35,9 @@ export default async function AdminDashboard() {
                 </div>
 
                 {/* Add New Project Card */}
-                <Link href="/admin/projects/new" className="group p-6 flex flex-col items-center justify-center border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 transition-colors cursor-pointer">
-                    <Plus className="w-8 h-8 text-neutral-400 group-hover:text-emerald-500 mb-2" />
-                    <span className="text-neutral-500 font-medium group-hover:text-emerald-600">Add Project</span>
+                <Link href="/admin/projects/new" className="group p-6 flex flex-col items-center justify-center border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl hover:border-[#10B981] hover:bg-blue-50 dark:hover:bg-[#052659]/10 transition-colors cursor-pointer">
+                    <Plus className="w-8 h-8 text-neutral-400 group-hover:text-[#10B981] mb-2" />
+                    <span className="text-neutral-500 font-medium group-hover:text-[#10B981]">Add Project</span>
                 </Link>
             </div>
 
@@ -67,7 +67,7 @@ export default async function AdminDashboard() {
                                         'use server'
                                         await syncProjectCommits(project.id)
                                     }}>
-                                        <button className="text-emerald-600 hover:text-emerald-800 text-sm font-medium" title="Sync Commits">
+                                        <button className="text-[#10B981] hover:text-[#34D399] text-sm font-medium" title="Sync Commits">
                                             <RefreshCw size={16} />
                                         </button>
                                     </form>

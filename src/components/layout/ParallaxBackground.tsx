@@ -25,7 +25,7 @@ export default function ParallaxBackground() {
                 className="absolute inset-0"
             >
                 <div className="absolute top-[0%] left-[20%] w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-[#052659]/30 rounded-full blur-[100px]" />
             </motion.div>
 
             {/* Precise Grid Pattern */}

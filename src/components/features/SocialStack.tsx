@@ -23,12 +23,12 @@ export default function SocialStack({ posts, tweetNodes = {} }: SocialStackProps
 
     const getSpanClass = (index: number) => {
         const pattern = [
-            'col-span-1 row-span-1',
-            'col-span-2 row-span-1',
-            'col-span-1 row-span-1',
-            'col-span-1 row-span-2',
-            'col-span-1 row-span-1',
-            'col-span-2 row-span-1',
+            'md:col-span-1 md:row-span-1',
+            'md:col-span-2 md:row-span-1',
+            'md:col-span-1 md:row-span-1',
+            'md:col-span-1 md:row-span-2',
+            'md:col-span-1 md:row-span-1',
+            'md:col-span-2 md:row-span-1',
         ];
         return pattern[index % pattern.length];
     };
@@ -36,7 +36,7 @@ export default function SocialStack({ posts, tweetNodes = {} }: SocialStackProps
     const getGradient = (index: number) => {
         const gradients = [
             'from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20',
-            'from-emerald-500/10 to-teal-500/10 hover:from-emerald-500/20 hover:to-teal-500/20',
+            'from-[#10B981]/10 to-[#34D399]/10 hover:from-[#10B981]/20 hover:to-[#34D399]/20',
             'from-pink-500/10 to-rose-500/10 hover:from-pink-500/20 hover:to-rose-500/20',
             'from-amber-500/10 to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20',
             'from-sky-500/10 to-cyan-500/10 hover:from-sky-500/20 hover:to-cyan-500/20',
@@ -53,7 +53,7 @@ export default function SocialStack({ posts, tweetNodes = {} }: SocialStackProps
 
 
             <div className="text-center mb-16 relative z-10 mt-10">
-                <h3 className="text-5xl font-bold mb-3 font-heading text-white tracking-tight">Transmission</h3>
+                <h3 className="text-3xl md:text-5xl font-bold mb-3 font-heading text-white tracking-tight">Transmission</h3>
                 <p className="text-neutral-500 font-light">Intercepted Signals</p>
             </div>
 
@@ -93,7 +93,7 @@ export default function SocialStack({ posts, tweetNodes = {} }: SocialStackProps
                                         <p className="text-lg text-white font-medium leading-snug line-clamp-3">
                                             {post.description || post.content || "View Signal Data"}
                                         </p>
-                                        <div className="h-1 w-10 mt-4 rounded-full bg-white/10 group-hover:bg-emerald-500 transition-colors duration-500" />
+                                        <div className="h-1 w-10 mt-4 rounded-full bg-white/10 group-hover:bg-[#10B981] transition-colors duration-500" />
                                     </div>
                                 </div>
                             </div>
